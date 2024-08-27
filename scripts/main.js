@@ -40,7 +40,7 @@ if (productType === 'premium') {
     document.getElementById('product-price').textContent = '$25.00';
 } else if (productType === 'basic') {
     document.getElementById('product-name').textContent = 'Xercaii Basic Tweaking Utility';
-    document.getElementById('product-price').textContent = '$0.01';
+    document.getElementById('product-price').textContent = '$8.00';
 }
 
 paypal.Buttons({
@@ -48,7 +48,7 @@ paypal.Buttons({
         return actions.order.create({
             purchase_units: [{
                 amount: {
-                    value: (productType === 'premium' ? '25.00' : '0.01')
+                    value: (productType === 'premium' ? '25.00' : '8.00')
                 }
             }]
         });
