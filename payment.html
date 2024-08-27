@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Payment - Xercaii Tweaks</title>
+    <link rel="stylesheet" href="styles/main.css">
+    <script src="https://www.paypal.com/sdk/js?client-id=AcXnOz-4DsaN0mzqUB0fgrdErToBlHHArJ7K4h-OgUATv6b-t9zncp7OZW7HO1_6EiKXDy3GU2Vqch6D"></script>
+</head>
+<style>
+    /* Styling for large text centered at the top */
+    .large-text-container {
+        position: absolute;
+top: 0;
+left: 50%;
+transform: translateX(-50%);
+width: 50%;
+text-align: center;
+color: #fff; /* Optional: text color */
+padding: 20px; /* Optional: padding around the text */
+}
+
+.top-text h1 {
+font-size: 3em; /* Adjust the size as needed */
+margin: 0; /* Remove default margin */
+}
+
+</style>
+</head>
+
+<!-- Container for the large text -->
+<div class="top-text">
+    <h1>PURCHASE</h1>
+</div>
+
+<body>
+    <header>
+        <div class="logo">
+            <img src="Extra/Images/goku-ultra-instinct.1920x1080.mp4" alt="Xercaii Tweaks Logo">
+        </div>
+        <nav>
+            <ul>
+                <li><a href="index.html">Home</a></li>
+                <li><a href="shop.html">Shop</a></li>
+                <li><a href="#" id="menu-btn">Menu</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <div id="menu-overlay" class="menu-overlay">
+        <div class="menu-content">
+            <button id="close-menu" class="close-menu">X</button>
+            <h2>Follow Us</h2>
+            <ul>
+                <li><a href="https://www.youtube.com/c/Xercaii" target="_blank" style="color:red;">YouTube: Xercaii</a></li>
+                <li><a href="https://www.twitch.tv/youtubexercaii" target="_blank" style="color:purple;">Twitch: YouTube Xercaii</a></li>
+                <li><a href="https://www.patreon.com/Xercaii" target="_blank" style="color:rgb(246, 244, 246);">Patreon: Xercaii</a></li>
+            </ul>
+        </div>
+    </div>
+
+    <main>
+        <h1>Complete Your Purchase</h1>
+        <p>You're about to purchase the <span id="product-name"></span> utility for <span id="product-price"></span>.</p>
+        <div id="paypal-button-container"></div>
+    </main>
+
+    <footer>
+        <p>&copy; 2024 Xercaii Tweaks. All Rights Reserved.</p>
+    </footer>
+
+    <script src="scripts/main.js"></script>
+</body>
+
+</html>

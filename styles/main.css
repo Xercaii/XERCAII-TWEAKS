@@ -1,0 +1,235 @@
+/* Increase the size of the PayPal button container */
+#paypal-button-container {
+    position: absolute;
+    top: 65%;
+    left: 50%;
+    transform: translate(-50%, -50%) scale(1.1); /* Increase the scale to 1.2 for a slightly bigger size */
+}
+
+/* General Styles */
+body {
+    font-family: Arial, sans-serif;
+    background-color: #121212;
+    color: #fff;
+    margin: 0;
+    padding: 0;
+}
+
+header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px;
+    background-color: #1f1f1f;
+}
+
+header .logo img {
+    width: 150px;
+}
+
+nav ul {
+    list-style: none;
+    display: flex;
+    margin: 0;
+    padding: 0;
+}
+
+nav ul li {
+    margin-left: 20px;
+}
+
+nav ul li a {
+    color: #fff;
+    text-decoration: none;
+}
+
+nav ul li a:hover {
+    color: #00c6ff;
+}
+
+/* Menu Overlay */
+#menu-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.9);
+    display: none;
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+}
+
+#menu-overlay .menu-content {
+    text-align: center;
+}
+
+#menu-overlay .close-menu {
+    background-color: #ff0000;
+    color: #fff;
+    border: none;
+    padding: 10px 20px;
+    cursor: pointer;
+}
+
+#menu-overlay .close-menu:hover {
+    background-color: #cc0000;
+}
+
+#menu-overlay ul {
+    list-style: none;
+    padding: 0;
+}
+
+#menu-overlay ul li {
+    margin-bottom: 15px;
+}
+
+#menu-overlay ul li a {
+    color: #fff;
+    text-decoration: none;
+    font-size: 1.5rem;
+}
+
+/* Main Content */
+main {
+    padding: 50px 20px;
+    text-align: center;
+}
+
+main h1 {
+    font-size: 2.5rem;
+    margin-bottom: 20px;
+}
+
+main p {
+    font-size: 1.2rem;
+    margin-bottom: 30px;
+}
+
+/* Buttons */
+.btn {
+    background-color: #00c6ff;
+    color: #fff;
+    padding: 15px 30px;
+    text-decoration: none;
+    border-radius: 50px;
+    transition: background-color 0.3s ease;
+}
+
+.btn:hover {
+    background-color: #009ec3;
+}
+
+/* Utility Sections */
+.utility-section {
+    background-color: #1f1f1f;
+    padding: 40px;
+    margin-bottom: 30px;
+    border-radius: 10px;
+    text-align: center;
+}
+
+.utility-section img {
+    width: 150px;
+    margin-bottom: 20px;
+}
+
+.utility-section h2 {
+    font-size: 1.8rem;
+    margin-bottom: 10px;
+}
+
+.utility-section p {
+    font-size: 1.2rem;
+    margin-bottom: 20px;
+}
+
+/* Footer */
+footer {
+    background-color: #1f1f1f;
+    padding: 20px;
+    text-align: center;
+    color: #888;
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+}
+
+/* Add styles for buttons */
+.btn {
+    background-color: #ff5733;
+    color: white;
+    padding: 10px 20px;
+    text-decoration: none;
+    font-size: 16px;
+    border-radius: 5px;
+    margin-right: 10px;
+    border: none;
+    cursor: pointer;
+}
+
+.btn:hover {
+    background-color: #c13b17;
+}
+
+.description-btn {
+    background-color: #555;
+}
+
+.description-btn:hover {
+    background-color: #333;
+}
+
+/* Payment Page */
+#product-name {
+    font-weight: bold;
+    color: #00c6ff;
+}
+
+/* CSS for positioning the large text */
+.top-text {
+    position: absolute;
+    top: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 50%;
+    text-align: center;
+    color: #fff; /* Optional: text color */
+    padding: 20px; /* Optional: padding around the text */
+}
+
+.top-text h1 {
+    font-size: 3em; /* Adjust the size as needed */
+    margin: 0; /* Remove default margin */
+}
+
+/* Account Menu Styles */
+.account-menu {
+    margin-left: auto;
+    display: flex;
+    align-items: center;
+}
+
+.account-icon {
+    display: inline-block;
+    width: 40px;
+    height: 40px;
+}
+
+.account-icon img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.account-icon:hover {
+    cursor: pointer;
+    opacity: 0.8;
+}
+
+#product-price {
+    font-weight: bold;
+    color: #00c6ff;
+}

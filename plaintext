@@ -1,0 +1,17 @@
+XercaiiTweaks/
+│
+├── index.html
+├── shop.html
+├── payment.html
+├── success.html
+├── styles/
+│   └── main.css
+├── scripts/
+│   └── main.js
+├── assets/
+│   └── premium-file.zip
+│   └── basic-file.zip
+└── images/
+    └── logo.png
+    └── premium-tweak.png
+    └── basic-tweak.png
