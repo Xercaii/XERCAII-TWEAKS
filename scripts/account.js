@@ -1,4 +1,3 @@
-
 document.getElementById('login-form')?.addEventListener('submit', async function (event) {
     event.preventDefault();
 
@@ -27,5 +26,31 @@ document.getElementById('login-form')?.addEventListener('submit', async function
         }
     } catch (error) {
         console.error('Error during login:', error);
+    }
+});
+
+document.getElementById('signup-form')?.addEventListener('submit', async function (event) {
+    event.preventDefault();
+
+    const email = document.getElementById('signup-email').value;
+    const password = document.getElementById('signup-password').value;
+
+    try {
+        const response = await fetch('/api/signup', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify({ email, password }),
+        });
+
+        if (response.ok) {
+            alert('Sign up successful. Please check your email for confirmation.');
+            window.location.href = 'success.html';
+        } else {
+            alert('Sign up failed. Email may already be in use.');
+        }
+    } catch (error) {
+        console.error('Error during signup:', error);
     }
 });

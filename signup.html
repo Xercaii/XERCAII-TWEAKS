@@ -6,6 +6,7 @@
     <title>Sign Up - Xercaii Tweaks</title>
     <link rel="stylesheet" href="styles/main.css">
 </head>
+
 <body>
     <header>
         <div class="logo">
@@ -15,41 +16,11 @@
             <ul>
                 <li><a href="index.html">Home</a></li>
                 <li><a href="shop.html">Shop</a></li>
-                <li><a href="#" id="menu-btn">Menu</a></li>
                 <li><a href="login.html">Login</a></li>
             </ul>
         </nav>
     </header>
-
-    <script>
-        document.getElementById('signup-form').addEventListener('submit', async function(e) {
-            e.preventDefault();
-            
-            const email = document.getElementById('signup-email').value;
-            const password = document.getElementById('signup-password').value;
     
-            try {
-                const response = await fetch('/api/signup', {
-                    method: 'POST',
-                    headers: {
-                        'Content-Type': 'application/json',
-                    },
-                    body: JSON.stringify({ email, password }),
-                });
-    
-                if (response.ok) {
-                    alert('Sign up successful! You can now log in.');
-                    window.location.href = 'login.html';
-                } else {
-                    const errorText = await response.text();
-                    alert(`Error: ${errorText}`);
-                }
-            } catch (error) {
-                alert('An error occurred. Please try again later.');
-            }
-        });
-    </script>
-
     <main>
         <h1>Sign Up</h1>
         <form id="signup-form">
@@ -59,6 +30,7 @@
             <input type="password" id="signup-password" name="password" required>
             <button type="submit" class="btn">Sign Up</button>
         </form>
+        <p id="signup-feedback"></p>
         <p>Already have an account? <a href="login.html">Login</a></p>
     </main>
 
