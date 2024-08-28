@@ -1,25 +1,11 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Payment Success - Xercaii Tweaks</title>
     <link rel="stylesheet" href="styles/main.css">
 </head>
-
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Success</title>
-</head>
-<body>
-    <h1>Success!</h1>
-    <p>You have successfully signed up!</p>
-</body>
-</html>
-
 <body>
     <header>
         <div class="logo">
@@ -49,33 +35,4 @@
     <main>
         <h1>Payment Successful!</h1>
         <p>Your purchase is complete. You can now download the file below:</p>
-        <a id="download-link" class="btn" href="#">Download Now</a>
-    </main>
-
-    <footer>
-        <p>&copy; 2024 Xercaii Tweaks. All Rights Reserved.</p>
-    </footer>
-
-    <script src="scripts/main.js"></script>
-    <script>
-        // Script to determine the type of download and set the download link
-        document.addEventListener('DOMContentLoaded', () => {
-            const urlParams = new URLSearchParams(window.location.search);
-            const type = urlParams.get('type');
-            const downloadLink = document.getElementById('download-link');
-
-            if (type === 'premium') {
-                downloadLink.href = 'assets/premium_utility.zip'; // Path to ZIP file for premium utility
-                downloadLink.textContent = 'Download Premium Utility';
-            } else if (type === 'basic') {
-                downloadLink.href = 'Extra/Other/Xercaii-Free-Tweaking-Utility-main.zip'; // Path to ZIP file for basic utility
-                downloadLink.textContent = 'Download Basic Utility';
-            } else {
-                downloadLink.href = '#';
-                downloadLink.textContent = 'Download Error';
-            }
-        });
-    </script>
-</body>
-
-</html>
+        <a id

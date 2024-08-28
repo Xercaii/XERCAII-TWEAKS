@@ -1,10 +1,11 @@
-from flask import Flask, render_template, request, redirect, url_for, session
+from flask import Flask, render_template, request, redirect, url_for, session, send_from_directory
 from flask_sqlalchemy import SQLAlchemy
 from flask_mail import Mail, Message
 import uuid
+import os
 
 app = Flask(__name__)
-app.secret_key = 'your_secret_key'  # Replace with a strong secret key
+app.secret_key = '1878-u4y2-7672-jhfw'  # Replace with a strong secret key
 app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///yourdatabase.db'
 db = SQLAlchemy(app)
 mail = Mail(app)
@@ -40,6 +41,19 @@ def success(token):
         db.session.delete(token_record)
         db.session.commit()
         return render_template('success.html')
+    return redirect(url_for('signup'))
+
+@app.route('/download/<path:filename>')
+def download(filename):
+    # Serve the file securely
+    if 'token' in request.args:
+        token = request.args['token']
+        token_record = Token.query.filter_by(token=token).first()
+        if token_record:
+            # Invalidate the token after use
+            db.session.delete(token_record)
+            db.session.commit()
+            return send_from_directory(directory='assets', filename=filename)
     return redirect(url_for('signup'))
 
 if __name__ == '__main__':
