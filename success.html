@@ -36,8 +36,8 @@
 
     <main>
         <h1>Payment Successful!</h1>
-        <p>Your purchase is complete. You can now download the file below:</p>
-        <a id="download-link" class="btn" href="#">Download Now</a>
+        <p id="message">Verifying your purchase...</p>
+        <a id="download-link" class="btn" href="#" style="display:none;">Download Now</a>
     </main>
 
     <footer>
@@ -46,24 +46,39 @@
 
     <script src="scripts/main.js"></script>
     <script>
-        // Script to determine the type of download and set the download link
+        // Script to validate the token and show the download link
         document.addEventListener('DOMContentLoaded', () => {
             const urlParams = new URLSearchParams(window.location.search);
-            const type = urlParams.get('type');
+            const token = urlParams.get('token');
             const downloadLink = document.getElementById('download-link');
+            const message = document.getElementById('message');
 
-            if (type === 'premium') {
-                downloadLink.href = 'Extra/Other/XERCAII TWEAKS.rar.zip'; // Path to ZIP file for premium utility
-                downloadLink.textContent = 'Download Premium Utility';
-            } else if (type === 'basic') {
-                downloadLink.href = 'Extra/Other/Xercaii-Free-Tweaking-Utility-main.zip'; // Path to ZIP file for basic utility
-                downloadLink.textContent = 'Download Basic Utility';
+            if (!token) {
+                message.textContent = 'Invalid access. No token provided.';
             } else {
-                downloadLink.href = '#';
-                downloadLink.textContent = 'Download Error';
+                fetch(`/validate-token?token=${token}`)
+                    .then(response => response.json())
+                    .then(data => {
+                        if (data.valid) {
+                            message.textContent = 'Your purchase is complete. You can now download the file below:';
+                            if (data.type === 'premium') {
+                                downloadLink.href = 'Extra/Other/XERCAII TWEAKS.rar.zip';
+                                downloadLink.textContent = 'Download Premium Utility';
+                            } else if (data.type === 'basic') {
+                                downloadLink.href = 'Extra/Other/Xercaii-Free-Tweaking-Utility-main.zip';
+                                downloadLink.textContent = 'Download Basic Utility';
+                            }
+                            downloadLink.style.display = 'inline-block';
+                        } else {
+                            message.textContent = 'Invalid or expired token.';
+                        }
+                    })
+                    .catch(() => {
+                        message.textContent = 'Error verifying token. Please try again later.';
+                    });
             }
         });
     </script>
 </body>
 
-</html>                                                      
+</html>
