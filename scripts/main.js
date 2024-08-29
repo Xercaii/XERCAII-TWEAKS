@@ -68,4 +68,4 @@ if (successProductType === 'premium') {
     document.getElementById('download-link').href = 'assets/premium-file.zip';
 } else if (successProductType === 'basic') {
     document.getElementById('download-link').href = 'assets/basic-file.zip';
-}  
+}

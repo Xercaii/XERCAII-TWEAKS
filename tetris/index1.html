@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Xercaii Tweaks Tetris</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <header>
+        <h1>Xercaii Tweaks Tetris</h1>
+    </header>
+    <main>
+        <!-- Menu Button -->
+        <button id="menu-button">Menu</button>
+
+        <!-- Menu Overlay -->
+        <div id="menu-overlay" class="menu-overlay">
+            <div class="menu-content">
+                <button id="close-menu" class="close-menu">X</button>
+                <h2>Menu</h2>
+                <ul>
+                    <!-- Updated link to navigate back to the main index.html -->
+                    <li><a href="../index.html" class="btn">Xercaii Tweaks</a></li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="tetris-container">
+            <canvas id="tetris" width="300" height="600"></canvas>
+            <div class="info">
+                <h2>Score: <span id="score">0</span></h2>
+                <h2>Lines: <span id="lines">0</span></h2>
+                <h2 id="pause-status">Status: <span id="pause-text">Running</span></h2>
+            </div>
+        </div>
+        <div class="controls">
+            <button onclick="playerRotate(1)">Rotate</button>
+            <button onclick="playerMove(-1)">Left</button>
+            <button onclick="playerMove(1)">Right</button>
+            <button onclick="playerDrop()">Down</button>
+            <button onclick="togglePause()">Pause</button>
+        </div>
+        <!-- Start Button -->
+        <div class="start-screen">
+            <button id="start-button">Start Game</button>
+        </div>
+        <!-- Game Over Screen -->
+        <div class="game-over-screen" id="game-over-screen">
+            <h2>Game Over</h2>
+            <button id="play-again-button">Play Again</button>
+        </div>
+    </main>
+    <footer>
+        <p>&copy; 2024 Xercaii Tweaks. All Rights Reserved.</p>
+    </footer>
+    <audio id="move-sound" src="extra/sounds/move.wav"></audio>
+    <audio id="rotate-sound" src="extra/sounds/rotate.wav"></audio>
+    <audio id="drop-sound" src="extra/sounds/drop.wav"></audio>
+    <audio id="clear-sound" src="extra/sounds/clear.wav"></audio>
+    <audio id="background-music" src="extra/sounds/tetris-music1.mp3" loop volume="0.1"></audio>
+    <audio id="game-over-sound" src="extra/sounds/game-over-arcade-6435.mp3" volume="0.2"></audio>
+    <script src="tetris.js"></script>
+    <script>
+        // JavaScript to handle menu display and close
+        document.getElementById('menu-button').addEventListener('click', () => {
+            document.getElementById('menu-overlay').style.display = 'flex';
+        });
+
+        document.getElementById('close-menu').addEventListener('click', () => {
+            document.getElementById('menu-overlay').style.display = 'none';
+        });
+    </script>
+</body>
+</html>
