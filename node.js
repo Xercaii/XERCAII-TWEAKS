@@ -1,32 +1,31 @@
 const express = require('express');
 const crypto = require('crypto');
-const bodyParser = require('body-parser');
 const app = express();
 
 // A simple in-memory storage to map tokens to purchases
 let purchaseTokens = {};
 
-app.use(bodyParser.json());
+app.use(express.json());
 
+// Endpoint to handle PayPal IPN/Webhook (this would be a POST request from PayPal)
 app.post('/paypal-webhook', (req, res) => {
     const paymentData = req.body;
 
     // Simulate payment verification (You should verify the payment with PayPal)
     if (paymentData.status === 'COMPLETED') {
         const token = crypto.randomBytes(16).toString('hex');
-        const productType = paymentData.purchase_units[0].custom_id;
-
         purchaseTokens[token] = {
             product: paymentData.purchase_units[0].description, // e.g., 'premium' or 'basic'
-            type: productType // type as passed from the PayPal button
+            type: paymentData.purchase_units[0].custom_id // type can be passed in PayPal custom field
         };
-
-        res.json({ token });
+        // Send the token back or redirect user to success.html with token as a query parameter
+        res.redirect(`/success.html?token=${token}`);
     } else {
-        res.status(400).json({ error: 'Payment not completed' });
+        res.status(400).send('Payment not completed');
     }
 });
 
+// Endpoint to validate the token
 app.get('/validate-token', (req, res) => {
     const token = req.query.token;
     if (purchaseTokens[token]) {
