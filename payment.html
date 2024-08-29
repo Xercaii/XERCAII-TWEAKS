@@ -1,37 +1,40 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Payment - Xercaii Tweaks</title>
     <link rel="stylesheet" href="styles/main.css">
     <script src="https://www.paypal.com/sdk/js?client-id=AcXnOz-4DsaN0mzqUB0fgrdErToBlHHArJ7K4h-OgUATv6b-t9zncp7OZW7HO1_6EiKXDy3GU2Vqch6D"></script>
-    <style>
-        /* Styling for large text centered at the top */
-        .large-text-container {
-            position: absolute;
-            top: 0;
-            left: 50%;
-            transform: translateX(-50%);
-            width: 50%;
-            text-align: center;
-            color: #fff; /* Optional: text color */
-            padding: 20px; /* Optional: padding around the text */
-        }
+</head>
+<style>
+    /* Styling for large text centered at the top */
+    .large-text-container {
+        position: absolute;
+top: 0;
+left: 50%;
+transform: translateX(-50%);
+width: 50%;
+text-align: center;
+color: #fff; /* Optional: text color */
+padding: 20px; /* Optional: padding around the text */
+}
 
-        .top-text h1 {
-            font-size: 3em; /* Adjust the size as needed */
-            margin: 0; /* Remove default margin */
-        }
-    </style>
+.top-text h1 {
+font-size: 3em; /* Adjust the size as needed */
+margin: 0; /* Remove default margin */
+}
+
+</style>
 </head>
 
-<body>
-    <!-- Container for the large text -->
-    <div class="top-text">
-        <h1>PURCHASE</h1>
-    </div>
+<!-- Container for the large text -->
+<div class="top-text">
+    <h1>PURCHASE</h1>
+</div>
 
+<body>
     <header>
         <div class="logo">
             <img src="Extra/Images/goku-ultra-instinct.1920x1080.mp4" alt="Xercaii Tweaks Logo">
@@ -68,34 +71,6 @@
     </footer>
 
     <script src="scripts/main.js"></script>
-    <script>
-        paypal.Buttons({
-            createOrder: function(data, actions) {
-                return actions.order.create({
-                    purchase_units: [{
-                        amount: {
-                            value: (productType === 'premium' ? '25.00' : '8.00')
-                        }
-                    }]
-                });
-            },
-            onApprove: function(data, actions) {
-                return actions.order.capture().then(function(details) {
-                    // Make an AJAX request to your server to get the unique token
-                    return fetch('/payment-success', {
-                        method: 'POST',
-                        headers: {
-                            'Content-Type': 'application/json'
-                        },
-                        body: JSON.stringify({ orderId: data.orderID })
-                    }).then(response => response.json())
-                      .then(data => {
-                          const token = data.token;
-                          window.location.href = `success.html?token=${token}`;
-                      });
-                });
-            }
-        }).render('#paypal-button-container');
-    </script>
 </body>
+
 </html>

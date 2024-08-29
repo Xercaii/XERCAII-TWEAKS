@@ -1,60 +1,47 @@
-from flask import Flask, render_template, request, redirect, url_for, session, send_from_directory
+from flask import Flask, render_template, request, redirect, url_for, session, jsonify
 from flask_sqlalchemy import SQLAlchemy
 from flask_mail import Mail, Message
 import uuid
-import os
 
 app = Flask(__name__)
-app.secret_key = '1878-u4y2-7672-jhfw'  # Replace with a strong secret key
+app.secret_key = 'ahsgfhgfafvfhavfhjashfty6753hvqbhfuy7ryh2brhdgjf'  # Replace with a strong secret key
 app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///yourdatabase.db'
 db = SQLAlchemy(app)
 mail = Mail(app)
 
 # Define a model for storing tokens
-class Token(db.Model):
+class PurchaseToken(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     token = db.Column(db.String(36), unique=True, nullable=False)
+    product_type = db.Column(db.String(50), nullable=False)
+    user_id = db.Column(db.String(100), nullable=False)  # Replace with actual user identification
 
-@app.route('/signup', methods=['GET', 'POST'])
-def signup():
-    if request.method == 'POST':
-        # Handle user signup
-        token = str(uuid.uuid4())
-        new_token = Token(token=token)
-        db.session.add(new_token)
-        db.session.commit()
-        
-        # Send confirmation email
-        msg = Message('Signup Successful', recipients=[request.form['email']])
-        msg.body = f"Your signup was successful. Access your page at: {url_for('success', token=token, _external=True)}"
-        mail.send(msg)
-        
-        return redirect(url_for('success', token=token))
-    return render_template('signup.html')
+@app.route('/api/purchase', methods=['POST'])
+def purchase():
+    data = request.get_json()
+    token = str(uuid.uuid4())
+    
+    # Save the purchase token to the database
+    new_purchase = PurchaseToken(
+        token=token,
+        product_type=data['productType'],
+        user_id=session.get('user_id')  # Assuming user_id is stored in the session
+    )
+    db.session.add(new_purchase)
+    db.session.commit()
+
+    return jsonify({'success': True, 'token': token})
 
 @app.route('/success/<token>')
 def success(token):
     # Validate the token
-    token_record = Token.query.filter_by(token=token).first()
-    if token_record:
+    purchase = PurchaseToken.query.filter_by(token=token).first()
+    if purchase:
         # Invalidate the token after use
-        db.session.delete(token_record)
+        db.session.delete(purchase)
         db.session.commit()
-        return render_template('success.html')
-    return redirect(url_for('signup'))
-
-@app.route('/download/<path:filename>')
-def download(filename):
-    # Serve the file securely
-    if 'token' in request.args:
-        token = request.args['token']
-        token_record = Token.query.filter_by(token=token).first()
-        if token_record:
-            # Invalidate the token after use
-            db.session.delete(token_record)
-            db.session.commit()
-            return send_from_directory(directory='assets', filename=filename)
-    return redirect(url_for('signup'))
+        return render_template('success.html', product_type=purchase.product_type)
+    return redirect(url_for('shop'))
 
 if __name__ == '__main__':
     app.run(debug=True)

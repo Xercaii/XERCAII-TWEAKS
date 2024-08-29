@@ -40,8 +40,25 @@ if (productType === 'premium') {
     document.getElementById('product-price').textContent = '$25.00';
 } else if (productType === 'basic') {
     document.getElementById('product-name').textContent = 'Xercaii Basic Tweaking Utility';
-    document.getElementById('product-price').textContent = '$0.01';
+    document.getElementById('product-price').textContent = '$8.00';
 }
+
+paypal.Buttons({
+    createOrder: function(data, actions) {
+        return actions.order.create({
+            purchase_units: [{
+                amount: {
+                    value: (productType === 'premium' ? '25.00' : '8.00')
+                }
+            }]
+        });
+    },
+    onApprove: function(data, actions) {
+        return actions.order.capture().then(function(details) {
+            window.location.href = 'success.html?type=' + productType;
+        });
+    }
+}).render('#paypal-button-container');
 
 // Success Page Logic
 const successParams = new URLSearchParams(window.location.search);
@@ -51,4 +68,4 @@ if (successProductType === 'premium') {
     document.getElementById('download-link').href = 'assets/premium-file.zip';
 } else if (successProductType === 'basic') {
     document.getElementById('download-link').href = 'assets/basic-file.zip';
-}
+}  

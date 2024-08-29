@@ -1,52 +1,48 @@
 const express = require('express');
 const bodyParser = require('body-parser');
-const session = require('express-session');
-const crypto = require('crypto');
 const fs = require('fs');
-const path = require('path');
-
 const app = express();
 const port = 3000;
 
 app.use(bodyParser.json());
-app.use(session({
-    secret: 'your_secret_key', // Replace with a strong secret key
-    resave: false,
-    saveUninitialized: true,
-    cookie: { secure: false } // Set to true if using HTTPS
-}));
+app.use(bodyParser.urlencoded({ extended: true }));
 
-// In-memory storage for tokens
-const tokens = {};
+const usersFile = './users.json';
 
-// Generate a new token
-const generateToken = () => {
-    return crypto.randomBytes(32).toString('hex');
+const readUsers = () => {
+    if (fs.existsSync(usersFile)) {
+        return JSON.parse(fs.readFileSync(usersFile));
+    }
+    return [];
 };
 
-// Handle PayPal payment success and generate a unique token
-app.post('/payment-success', (req, res) => {
-    const { orderId } = req.body;
-    const token = generateToken();
-    tokens[token] = orderId;
-    res.json({ token });
+const writeUsers = (users) => {
+    fs.writeFileSync(usersFile, JSON.stringify(users, null, 2));
+};
+
+// Handle login
+app.post('/api/login', (req, res) => {
+    const { email, password } = req.body;
+    const users = readUsers();
+    const user = users.find(u => u.email === email && u.password === password);
+    if (user) {
+        res.send('Login successful');
+    } else {
+        res.status(401).send('Invalid email or password');
+    }
 });
 
-// Middleware to verify token
-const verifyToken = (req, res, next) => {
-    const token = req.query.token;
-    if (tokens[token]) {
-        next();
-    } else {
-        res.status(403).send('Forbidden');
+// Handle signup
+app.post('/api/signup', (req, res) => {
+    const { email, password } = req.body;
+    const users = readUsers();
+    if (users.find(u => u.email === email)) {
+        res.status(400).send('Email already in use');
+        return;
     }
-};
-
-// Serve the success page with token validation
-app.get('/success.html', verifyToken, (req, res) => {
-    const token = req.query.token;
-    delete tokens[token]; // Invalidate the token
-    res.sendFile(path.join(__dirname, 'path/to/success.html'));
+    users.push({ email, password });
+    writeUsers(users);
+    res.status(201).send('Sign up successful');
 });
 
 app.listen(port, () => {
