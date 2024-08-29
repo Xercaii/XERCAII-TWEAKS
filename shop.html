@@ -68,6 +68,29 @@
             height: 100vh;
             width: 100vw;
         }
+
+        /* Ensure html and body take full height */
+        html, body {
+            height: 100%;
+            margin: 0;
+        }
+
+        /* Main Content */
+        main {
+            padding-bottom: 60px; /* Ensure space for the footer */
+        }
+
+        /* Footer Styles */
+        footer {
+            background-color: #1f1f1f;
+            color: #fff;
+            text-align: center;
+            padding: 10px;
+            position: relative; /* Normal flow */
+            bottom: 0;
+            width: 100%;
+            margin-top: 20px; /* Optional: margin from the content above */
+        }
     </style>
 </head>
 
@@ -138,7 +161,6 @@
               Best Performance And Latency Possible!
 
             • + A Lot More
-            
             " >Description</button>
             <a href="payment.html?type=premium" class="btn">Buy Now</a>
         </section>
@@ -156,19 +178,7 @@
         <p>&copy; 2024 Xercaii Tweaks. All Rights Reserved.</p>
     </footer>
 
-    <script src="scripts/account.js"></script>
-    <script>
-        // JavaScript to handle menu button and overlay visibility
-        document.getElementById('menu-btn').addEventListener('click', function() {
-            document.getElementById('menu-overlay').style.display = 'flex';
-            document.body.classList.add('no-scroll');
-        });
-
-        document.getElementById('close-menu').addEventListener('click', function() {
-            document.getElementById('menu-overlay').style.display = 'none';
-            document.body.classList.remove('no-scroll');
-        });
-    </script>
+    <script src="scripts/main.js"></script>
 </body>
 
 </html>

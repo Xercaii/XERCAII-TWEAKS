@@ -1,33 +1,32 @@
-// Menu Button Logic
-document.getElementById('menu-btn').addEventListener('click', function() {
-    document.getElementById('menu-overlay').style.display = 'flex';
-});
-
-document.getElementById('close-menu').addEventListener('click', function() {
-    document.getElementById('menu-overlay').style.display = 'none';
-});
-
-// Description Buttons
 document.addEventListener('DOMContentLoaded', () => {
+    console.log('JavaScript is loaded and running.');
+
     // Event listener for description buttons
     document.querySelectorAll('.description-btn').forEach(button => {
         button.addEventListener('click', (event) => {
+            console.log('Description button clicked.');
             const description = event.target.getAttribute('data-description');
-            alert(description); // Show the description in an alert dialog
+            if (description) {
+                alert(description); // Show the description in an alert dialog
+            } else {
+                console.error('No description found for this button.');
+            }
         });
     });
 
-    // Menu button functionality (if needed)
+    // Menu button functionality
     const menuBtn = document.getElementById('menu-btn');
     const menuOverlay = document.getElementById('menu-overlay');
     const closeMenuBtn = document.getElementById('close-menu');
 
     menuBtn.addEventListener('click', () => {
-        menuOverlay.style.display = 'block';
+        menuOverlay.style.display = 'flex'; // Change to 'flex' for centering content
+        document.body.classList.add('no-scroll'); // Disable scroll
     });
 
     closeMenuBtn.addEventListener('click', () => {
         menuOverlay.style.display = 'none';
+        document.body.classList.remove('no-scroll'); // Re-enable scroll
     });
 });
 
