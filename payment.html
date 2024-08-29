@@ -11,28 +11,60 @@
 <style>
     /* Styling for large text centered at the top */
     .large-text-container {
-        position: absolute;
-top: 0;
-left: 50%;
-transform: translateX(-50%);
-width: 50%;
-text-align: center;
-color: #fff; /* Optional: text color */
-padding: 20px; /* Optional: padding around the text */
-}
+         position: absolute;
+         top: 0;
+         left: 50%;
+         transform: translateX(-50%);
+         width: 35%;
+         text-align: center;
+         color: #fff; /* Optional: text color */
+         padding: 20px; /* Optional: padding around the text */
+         z-index: 1000; /* Ensure it is above other content */
+     }
 
-.top-text h1 {
-font-size: 3em; /* Adjust the size as needed */
-margin: 0; /* Remove default margin */
-}
+     .large-text-container h1 {
+         font-size: 3em; /* Adjust the size as needed */
+         margin: 0; /* Remove default margin */
+     }
 
-</style>
+    /* Add the styles for the menu overlay */
+     .menu-overlay {
+         position: fixed;
+         top: 0;
+         left: 0;
+         width: 100%;
+         height: 100%;
+         background: rgba(0, 0, 0, 0.8);
+         display: none; /* Hidden by default */
+         justify-content: center;
+         align-items: center;
+         z-index: 1000; /* Ensure it is above other content */
+     }
+
+     .menu-content {
+         padding: 20px;
+         border-radius: 8px;
+         text-align: center;
+         color: #000;
+     }
+
+     .menu-content h2 {
+         color: #fff; /* Change color of "Follow Us" text to white */
+     }
+
+     .close-menu {
+         background: #f00;
+         color: #fff;
+         border: none;
+         padding: 10px;
+         cursor: pointer;
+         border-radius: 4px;
+         position: absolute;
+         top: 10px;
+         right: 10px;
+     }
+ </style>
 </head>
-
-<!-- Container for the large text -->
-<div class="top-text">
-    <h1>PURCHASE</h1>
-</div>
 
 <body>
     <header>
@@ -51,14 +83,20 @@ margin: 0; /* Remove default margin */
     <div id="menu-overlay" class="menu-overlay">
         <div class="menu-content">
             <button id="close-menu" class="close-menu">X</button>
-            <h2>Follow Us</h2>
+            <h2>FOLLOW ME!</h2>
             <ul>
                 <li><a href="https://www.youtube.com/c/Xercaii" target="_blank" style="color:red;">YouTube: Xercaii</a></li>
                 <li><a href="https://www.twitch.tv/youtubexercaii" target="_blank" style="color:purple;">Twitch: YouTube Xercaii</a></li>
                 <li><a href="https://www.patreon.com/Xercaii" target="_blank" style="color:rgb(246, 244, 246);">Patreon: Xercaii</a></li>
+                <li><a href="tetris/index1.html" class="btn">Play Tetris</a></li>
             </ul>
         </div>
     </div>
+
+<!-- Add this new section with an id -->
+<div id="large-text-container" class="large-text-container">
+    <h1>PAYMENT</h1>
+</div>
 
     <main>
         <h1>Complete Your Purchase</h1>
@@ -71,6 +109,18 @@ margin: 0; /* Remove default margin */
     </footer>
 
     <script src="scripts/main.js"></script>
+    <script>
+        // JavaScript to handle menu button and overlay visibility
+        document.getElementById('menu-btn').addEventListener('click', function() {
+            document.getElementById('large-text-container').style.display = 'none';
+            document.getElementById('menu-overlay').style.display = 'flex';
+        });
+
+        document.getElementById('close-menu').addEventListener('click', function() {
+            document.getElementById('large-text-container').style.display = 'block';
+            document.getElementById('menu-overlay').style.display = 'none';
+        });
+    </script>
 </body>
 
 </html>
