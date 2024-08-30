@@ -338,4 +338,4 @@ document.getElementById('play-again-button').addEventListener('click', playAgain
 
 // Start the game initially
 playerReset();
-updateScore(); 
+updateScore();
