@@ -217,9 +217,7 @@ function playerMove(dir) {
     player.pos.x += dir;
     moveSound.play(); // Play move sound
     if (collide(arena, player)) {
-        player.pos
-
-.x -= dir;
+        player.pos.x -= dir;
     }
 }
 
