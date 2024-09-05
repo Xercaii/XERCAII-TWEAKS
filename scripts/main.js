@@ -46,7 +46,7 @@ document.addEventListener('DOMContentLoaded', () => {
         productPrice.textContent = `$${price}`;
     } else if (type === 'basic') {
         productName.textContent = 'Xercaii Basic Tweaking Utility';
-        price = 0.01;
+        price = 0.1;
         productPrice.textContent = `$${price}`;
     }   
     
