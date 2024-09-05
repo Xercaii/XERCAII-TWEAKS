@@ -30,34 +30,42 @@ document.addEventListener('DOMContentLoaded', () => {
     });
 });
 
-// Payment Page Logic
-const urlParams = new URLSearchParams(window.location.search);
-const productType = urlParams.get('type');
+// Handle PayPal button and charging correct amount
+document.addEventListener('DOMContentLoaded', () => {
+    const urlParams = new URLSearchParams(window.location.search);
+    const type = urlParams.get('type');
+    const productName = document.getElementById('product-name');
+    const productPrice = document.getElementById('product-price');
 
-if (productType === 'premium') {
-    document.getElementById('product-name').textContent = 'Xercaii Premium Tweaking Utility';
-    document.getElementById('product-price').textContent = '$25.00';
-} else if (productType === 'basic') {
-    document.getElementById('product-name').textContent = 'Xercaii Basic Tweaking Utility';
-    document.getElementById('product-price').textContent = '$8.00';
-}
+    let price;
 
-paypal.Buttons({
-    createOrder: function(data, actions) {
-        return actions.order.create({
-            purchase_units: [{
-                amount: {
-                    value: (productType === 'premium' ? '25.00' : '8.00')
-                }
-            }]
-        });
-    },
-    onApprove: function(data, actions) {
-        return actions.order.capture().then(function(details) {
-            window.location.href = 'success.html?type=' + productType;
-        });
+    if (type === 'premium') {
+        productName.textContent = 'Xercaii Premium Tweaking Utility';
+        price = 25;
+        productPrice.textContent = `$${price}`;
+    } else if (type === 'basic') {
+        productName.textContent = 'Xercaii Basic Tweaking Utility';
+        price = 0.01;
+        productPrice.textContent = `$${price}`;
     }
-}).render('#paypal-button-container');
+
+    paypal.Buttons({
+        createOrder: function(data, actions) {
+            return actions.order.create({
+                purchase_units: [{
+                    amount: {
+                        value: price
+                    }
+                }]
+            });
+        },
+        onApprove: function(data, actions) {
+            return actions.order.capture().then(function(details) {
+                window.location.href = `success.html?type=${type}`;
+            });
+        }
+    }).render('#paypal-button-container');
+});
 
 // Success Page Logic
 const successParams = new URLSearchParams(window.location.search);

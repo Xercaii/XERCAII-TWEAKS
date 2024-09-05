@@ -6,65 +6,62 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Payment - Xercaii Tweaks</title>
     <link rel="stylesheet" href="styles/main.css">
-    <script src="https://www.paypal.com/sdk/js?client-id=AcXnOz-4DsaN0mzqUB0fgrdErToBlHHArJ7K4h-OgUATv6b-t9zncp7OZW7HO1_6EiKXDy3GU2Vqch6D"></script>
+    <script src="https://www.paypal.com/sdk/js?client-id=AcXnOz-4DsaN0mzqUB0fgrdErToBlHHArJ7K4h-OgUATv6b-t9zncp7OZW7HO1_6EiKXDy3GU2Vqch6D&currency=USD"></script>
 </head>
 <style>
-    /* Styling for large text centered at the top */
     .large-text-container {
-         position: absolute;
-         top: 0;
-         left: 50%;
-         transform: translateX(-50%);
-         width: 35%;
-         text-align: center;
-         color: #fff; /* Optional: text color */
-         padding: 20px; /* Optional: padding around the text */
-         z-index: 1000; /* Ensure it is above other content */
-     }
+        position: absolute;
+        top: 0;
+        left: 50%;
+        transform: translateX(-50%);
+        width: 35%;
+        text-align: center;
+        color: #fff;
+        padding: 20px;
+        z-index: 1000;
+    }
 
-     .large-text-container h1 {
-         font-size: 3em; /* Adjust the size as needed */
-         margin: 0; /* Remove default margin */
-     }
+    .large-text-container h1 {
+        font-size: 3em;
+        margin: 0;
+    }
 
-    /* Add the styles for the menu overlay */
-     .menu-overlay {
-         position: fixed;
-         top: 0;
-         left: 0;
-         width: 100%;
-         height: 100%;
-         background: rgba(0, 0, 0, 0.8);
-         display: none; /* Hidden by default */
-         justify-content: center;
-         align-items: center;
-         z-index: 1000; /* Ensure it is above other content */
-     }
+    .menu-overlay {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: rgba(0, 0, 0, 0.8);
+        display: none;
+        justify-content: center;
+        align-items: center;
+        z-index: 1000;
+    }
 
-     .menu-content {
-         padding: 20px;
-         border-radius: 8px;
-         text-align: center;
-         color: #000;
-     }
+    .menu-content {
+        padding: 20px;
+        border-radius: 8px;
+        text-align: center;
+        color: #000;
+    }
 
-     .menu-content h2 {
-         color: #fff; /* Change color of "Follow Us" text to white */
-     }
+    .menu-content h2 {
+        color: #fff;
+    }
 
-     .close-menu {
-         background: #f00;
-         color: #fff;
-         border: none;
-         padding: 10px;
-         cursor: pointer;
-         border-radius: 4px;
-         position: absolute;
-         top: 10px;
-         right: 10px;
-     }
- </style>
-</head>
+    .close-menu {
+        background: #f00;
+        color: #fff;
+        border: none;
+        padding: 10px;
+        cursor: pointer;
+        border-radius: 4px;
+        position: absolute;
+        top: 10px;
+        right: 10px;
+    }
+</style>
 
 <body>
     <header>
@@ -88,15 +85,14 @@
                 <li><a href="https://www.youtube.com/c/Xercaii" target="_blank" style="color:red;">YouTube: Xercaii</a></li>
                 <li><a href="https://www.twitch.tv/youtubexercaii" target="_blank" style="color:purple;">Twitch: YouTube Xercaii</a></li>
                 <li><a href="https://www.patreon.com/Xercaii" target="_blank" style="color:rgb(246, 244, 246);">Patreon: Xercaii</a></li>
-                <li><a href="tetris/index1.html" class="btn">Play Tetris</a></li>
+                <li><a href="tetris/index.html" class="btn">Play Tetris</a></li>
             </ul>
         </div>
     </div>
 
-<!-- Add this new section with an id -->
-<div id="large-text-container" class="large-text-container">
-    <h1>PAYMENT</h1>
-</div>
+    <div id="large-text-container" class="large-text-container">
+        <h1>PAYMENT</h1>
+    </div>
 
     <main>
         <h1>Complete Your Purchase</h1>
@@ -120,6 +116,7 @@
             document.getElementById('large-text-container').style.display = 'block';
             document.getElementById('menu-overlay').style.display = 'none';
         });
+
     </script>
 </body>
 
