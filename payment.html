@@ -143,7 +143,10 @@
                             amount: {
                                 value: price
                             }
-                        }]
+                        }],
+                        application_context: {
+                            return_url: `${window.location.origin}/success.html?type=${type}`
+                        }
                     });
                 },
                 onApprove: function(data, actions) {
