@@ -1,9 +1,11 @@
 /* Increase the size of the PayPal button container */
 #paypal-button-container {
-    position: absolute;
-    top: 65%;
-    left: 50%;
-    transform: translate(-50%, -50%) scale(1.1); /* Increase the scale to 1.2 for a slightly bigger size */
+    position: fixed; /* Ensure it stays in place */
+    top: 50%; /* Center vertically */
+    left: 50%; /* Center horizontally */
+    transform: translate(-50%, -50%) scale(1.0); /* Center and scale if needed */
+    z-index: 1000; /* Ensure it is above other content */
+    margin-top: 20px; /* Add some margin to ensure it doesn't go off-screen */
 }
 
 /* General Styles */
@@ -13,6 +15,7 @@ body {
     color: #fff;
     margin: 0;
     padding: 0;
+    overflow-y: auto; /* Allow vertical scrolling */
 }
 
 header {
@@ -96,6 +99,8 @@ nav ul li a:hover {
 main {
     padding: 50px 20px;
     text-align: center;
+    min-height: 100vh; /* Ensure it takes at least the full viewport height */
+    box-sizing: border-box; /* Include padding in height calculation */
 }
 
 main h1 {
@@ -232,4 +237,4 @@ footer {
 #product-price {
     font-weight: bold;
     color: #00c6ff;
-}           
+}

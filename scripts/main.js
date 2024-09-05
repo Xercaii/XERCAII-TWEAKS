@@ -75,5 +75,5 @@ const successProductType = successParams.get('type');
 if (successProductType === 'premium') {
     document.getElementById('download-link').href = 'Extra/Other/XERCAII TWEAKS.rar.zip';
 } else if (successProductType === 'basic') {
-    document.getElementById('download-link').href = 'Extra/Other/Xercaii-Free-Tweaking-Utility-main.zip';
+    document.getElementById('download-link').href = 'Extra/Other/Xercaii-Basic-Tweaking-Utility-main.zip';
 }
