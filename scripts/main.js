@@ -73,7 +73,7 @@ const successParams = new URLSearchParams(window.location.search);
 const successProductType = successParams.get('type');
 
 if (successProductType === 'premium') {
-    document.getElementById('download-link').href = 'assets/premium-file.zip';
+    document.getElementById('download-link').href = 'Extra/Other/XERCAII TWEAKS.rar.zip';
 } else if (successProductType === 'basic') {
     document.getElementById('download-link').href = 'Extra/Other/Xercaii-Free-Tweaking-Utility-main.zip';
-} 
+}
