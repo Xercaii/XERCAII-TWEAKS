@@ -42,11 +42,11 @@ document.addEventListener('DOMContentLoaded', () => {
 
     if (type === 'premium') {
         productName.textContent = 'Xercaii Premium Tweaking Utility';
-        price = 25;
+        price = 24.99;
         productPrice.textContent = `$${price}`;
     } else if (type === 'basic') {
         productName.textContent = 'Xercaii Basic Tweaking Utility';
-        price = 0.1;
+        price = 7.99;
         productPrice.textContent = `$${price}`;
     }   
     

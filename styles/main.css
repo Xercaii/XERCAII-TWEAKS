@@ -1,9 +1,10 @@
 /* Increase the size of the PayPal button container */
 #paypal-button-container {
-    position: absolute;
-    top: 70%;
-    left: 50%;
-    transform: translate(-50%, -50%) scale(1.0); /* Increase the scale to 1.2 for a slightly bigger size */
+    position: absolute; /* Change to fixed to ensure it stays in place */
+    top: 70%; /* Center vertically */
+    left: 50%; /* Center horizontally */
+    transform: translate(-50%, -50%) scale(1.0); /* Adjust scale if needed */
+    z-index: 1000; /* Ensure it is above other content */
 }
 
 /* General Styles */
