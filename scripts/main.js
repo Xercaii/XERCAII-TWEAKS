@@ -30,6 +30,7 @@ document.addEventListener('DOMContentLoaded', () => {
     });
 });
 
+// Payment Page Logic
 // Handle PayPal button and charging correct amount
 document.addEventListener('DOMContentLoaded', () => {
     const urlParams = new URLSearchParams(window.location.search);
@@ -47,8 +48,8 @@ document.addEventListener('DOMContentLoaded', () => {
         productName.textContent = 'Xercaii Basic Tweaking Utility';
         price = 0.01;
         productPrice.textContent = `$${price}`;
-    }
-
+    }   
+    
     paypal.Buttons({
         createOrder: function(data, actions) {
             return actions.order.create({
@@ -74,5 +75,5 @@ const successProductType = successParams.get('type');
 if (successProductType === 'premium') {
     document.getElementById('download-link').href = 'assets/premium-file.zip';
 } else if (successProductType === 'basic') {
-    document.getElementById('download-link').href = 'assets/basic-file.zip';
-}
+    document.getElementById('download-link').href = 'Extra/Other/Xercaii-Free-Tweaking-Utility-main.zip';
+} 
