@@ -6,9 +6,10 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>XERCAII TWEAKS - xercaii tweaks</title>
     <link rel="stylesheet" href="styles/main.css">
+    <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@400;700&display=swap" rel="stylesheet">
     <style>
-       /* Styling for large text centered at the top */
-       .large-text-container {
+        /* Styling for large text centered at the top */
+        .large-text-container {
             position: absolute;
             top: 0;
             left: 50%;
@@ -25,14 +26,13 @@
             margin: 0; /* Remove default margin */
         }
 
-       /* Add the styles for the menu overlay */
         .menu-overlay {
             position: fixed;
             top: 0;
             left: 0;
             width: 100%;
             height: 100%;
-            background: rgba(0, 0, 0, 0.8);
+            background: rgba(0, 0, 0, 0.5);
             display: none; /* Hidden by default */
             justify-content: center;
             align-items: center;
@@ -43,7 +43,10 @@
             padding: 20px;
             border-radius: 8px;
             text-align: center;
-            color: #000;
+            background: rgba(255, 255, 255, 0.1); /* Glass-like background */
+            backdrop-filter: blur(10px); /* Blurry glass effect */
+            color: #ffffff;
+            max-width: 80%; /* Limit the width */
         }
 
         .menu-content h2 {
@@ -61,13 +64,154 @@
             top: 10px;
             right: 10px;
         }
+
+        /* Main Content */
+        main {
+            padding-bottom: 70px; /* Ensure space for the footer */
+        }
+
+        /* Footer Styles */
+        footer {
+            background-color: #1f1f1f;
+            color: #b5afaf;
+            text-align: center;
+            padding: 10px;
+            bottom: 0;
+            margin-top: 20px; /* Optional: margin from the content above */
+        }
+
+        /* New style for the Xercaii-2.gif image */
+        .xercaii-logo {
+            height: 100px; /* Adjust this value to set the desired height */
+            width: auto; /* Maintain aspect ratio */
+        }
+
+        /* Styles for centered footer content from shop.html */
+        .centered-footer {
+            position: fixed; /* Fix position on the screen */
+            bottom: 48%; /* Position at the middle */
+            left: 50%; /* Center horizontally */
+            transform: translate(-50%, 50%); /* Adjust to center */
+            background: none; /* Transparent background */
+        }
+
+        .centered-footer-content {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin: 0 auto; /* Center content */
+            gap: 40px; /* Add space between elements */
+        }
+
+        .centered-footer-item {
+            display: flex;
+            align-items: center;
+            text-align: left; /* Align text to the left of images */
+        }
+
+        .centered-footer-item img {
+            width: 30px;
+            height: 30px;
+            margin-right: 10px; /* Space between image and text */
+        }
+
+        .centered-footer-item p.bold {
+            color: #fff;
+            font-weight: bold; /* Make text bold */
+            margin: 0;
+            font-family: 'Atkinson Hyperlegible', sans-serif;
+        }
+
+        .centered-footer-item p.small {
+            color: #fff;
+            opacity: 0.7; /* Make text slightly transparent */
+            font-size: 0.8em; /* Make text smaller */
+            margin: 0;
+            font-family: 'Atkinson Hyperlegible', sans-serif;
+        }
+
+        /* Style for the Contact Support button */
+        .contact-support {
+        position: fixed;
+        bottom: 7.5px;
+        left: 10px;
+        }
+
+        .contact-support .btn {
+        background-color: #f00; /* Red background for visibility */
+        color: #fff; /* White text */
+        padding: 10px 20px;
+        border: none;
+        border-radius: 5px;
+        text-decoration: none;
+        font-size: 16px;
+        }
+
+        .btn:hover {
+    background-color: rgb(144, 4, 4);
+}
+
+/* Make menu wider */
+.menu-content {
+    width: 60%; /* Increase the width of the menu */
+    max-width: 600px; /* Optional: set a max-width to prevent it from getting too wide on larger screens */
+}
+
+/* Button styles */
+.btn {
+    display: inline-block;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 4px;
+    color: #fff;
+    text-align: center;
+    text-decoration: none;
+    font-size: 16px;
+    font-family: 'Oswald', sans-serif;
+    cursor: pointer;
+    margin: 5px 0;
+    transition: background 0.3s ease; /* Smooth transition for gradient */
+}
+
+.btn.youtube {
+    background: linear-gradient(to right, #FF0000, #CC0000); /* YouTube red gradient */
+}
+
+.btn.youtube:hover {
+    background: linear-gradient(to right, #CC0000, #FF0000); /* Reverse gradient for hover effect */
+}
+
+.btn.twitch {
+    background: linear-gradient(to right, #6441A5, #4A2C77); /* Twitch purple gradient */
+}
+
+.btn.twitch:hover {
+    background: linear-gradient(to right, #4A2C77, #6441A5); /* Reverse gradient for hover effect */
+}
+
+.btn.tetris {
+    background: linear-gradient(to right, #00CFFF, #005B96); /* Tetris blue gradient */
+}
+
+.btn.tetris:hover {
+    background: linear-gradient(to right, #005B96, #00CFFF); /* Reverse gradient for hover effect */
+}
+
+.btn.patreon {
+    background-color: #ff00e1; /* Patreon pink */
+}
+
+.btn.patreon:hover {
+    background-color: #c700c8; /* Darker pink for hover effect */
+}
     </style>
+
 </head>
 
 <body>
     <header>
         <div class="logo">
-            <img src="Extra/Images/goku-ultra-instinct.1920x1080.mp4" alt="Xercaii Tweaks Logo">
+            <img src="Extra/Images/Xercaii-2.gif" alt="Xercaii Tweaks Logo" class="xercaii-logo">
         </div>
         <nav>
             <ul>
@@ -90,10 +234,9 @@
             <button id="close-menu" class="close-menu">X</button>
             <h2>FOLLOW ME!</h2>
             <ul>
-                <li><a href="https://www.youtube.com/c/Xercaii" target="_blank" style="color:red;">YouTube: Xercaii</a></li>
-                <li><a href="https://www.twitch.tv/youtubexercaii" target="_blank" style="color:purple;">Twitch: YouTube Xercaii</a></li>
-                <li><a href="https://www.patreon.com/Xercaii" target="_blank" style="color:rgb(246, 244, 246);">Patreon: Xercaii</a></li>
-                <li><a href="tetris/index.html" class="btn">Play Tetris</a></li>
+                <li><a href="https://www.youtube.com/c/Xercaii" target="_blank" class="btn youtube">YouTube</a></li>
+                <li><a href="https://www.twitch.tv/youtubexercaii" target="_blank" class="btn twitch">Twitch</a></li>
+                <li><a href="tetris/index.html" class="btn tetris">Play Tetris</a></li>
             </ul>
         </div>
     </div>
@@ -113,6 +256,26 @@
         <p>&copy; 2024 Xercaii Tweaks. All Rights Reserved.</p>
     </footer>
 
+    <!-- Inserted footer content from shop.html, centered in the middle -->
+    <div class="centered-footer">
+        <div class="centered-footer-content">
+            <div class="centered-footer-item">
+                <img src="Extra/Images/like.png" alt="Secure Payment">
+                <div>
+                    <p class="bold">Over 0</p>
+                    <p class="small">Satisfied customers</p>
+                </div>
+            </div>
+            <div class="centered-footer-item">
+                <img src="Extra/Images/Delivery.png" alt="Instant Delivery">
+                <div>
+                    <p class="bold">Instant</p>
+                    <p class="small">Delivery</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
     <script src="scripts/account.js"></script>
     <script>
         // JavaScript to handle menu button and overlay visibility
@@ -126,6 +289,12 @@
             document.getElementById('menu-overlay').style.display = 'none';
         });
     </script>
+
+<!-- Contact Support Button -->
+<div class="contact-support">
+    <a href="support.html" class="btn">Contact Support</a>
+</div>
+
 </body>
 
-</html>
+</html>  

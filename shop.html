@@ -1,20 +1,21 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
+    <!-- Existing head content -->
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Xercaii Tweaks - Shop</title>
     <link rel="stylesheet" href="styles/main.css">
+    <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@400;700&display=swap" rel="stylesheet">
     <style>
-        /* Add the styles for the menu overlay */
+        /* Existing styles */
         .menu-overlay {
             position: fixed;
             top: 0;
             left: 0;
             width: 100%;
             height: 100%;
-            background: rgba(0, 0, 0, 0.8);
+            background: rgba(0, 0, 0, 0.5);
             display: none; /* Hidden by default */
             justify-content: center;
             align-items: center;
@@ -25,28 +26,19 @@
             padding: 20px;
             border-radius: 8px;
             text-align: center;
-            color: #000;
-            max-width: 300px; /* Optional: limit the width */
+            background: rgba(255, 255, 255, 0.1); /* Glass-like background */
+            backdrop-filter: blur(10px); /* Blurry glass effect */
+            color: #ffffff;
+            max-width: 80%; /* Limit the width */
         }
 
         .menu-content h2 {
-            color: #fff; /* Change color of "Follow Us" text to white */
-            margin-bottom: 20px; /* Optional: space below the heading */
+            color: #ffffff; /* Change color of "Description" text to white */
+            margin-bottom: 20px; /* Space below the heading */
         }
 
-        .menu-content ul {
-            list-style-type: none; /* Remove bullet points */
-            padding: 0; /* Remove padding */
-            margin: 0; /* Remove margin */
-        }
-
-        .menu-content li {
-            margin: 10px 0; /* Add space between items */
-        }
-
-        .menu-content a {
-            color: inherit; /* Inherit color from parent */
-            text-decoration: none; /* Remove underline */
+        .menu-content p {
+            text-align: left;
         }
 
         .close-menu {
@@ -61,7 +53,53 @@
             right: 10px;
         }
 
-        /* Disable interactions on background content when menu is open */
+        .description-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.5);
+            display: none; /* Hidden by default */
+            justify-content: center;
+            align-items: center;
+            z-index: 1000; /* Ensure it is above other content */
+        }
+
+        .description-content {
+            padding: 20px;
+            border-radius: 8px;
+            text-align: center;
+            background: rgba(255, 255, 255, 0.1); /* Glass-like background */
+            backdrop-filter: blur(10px); /* Blurry glass effect */
+            color: #ffffff;
+            max-width: 80%; /* Limit the width */
+            max-height: 80%; /* Ensure it fits in the viewport */
+            overflow-y: auto; /* Enable scrolling if needed */
+        }
+
+        .description-content h2 {
+            color: #ffffff; /* Change color of "Description" text to white */
+            margin-bottom: 20px; /* Space below the heading */
+        }
+
+        .description-content p {
+            text-align: left;
+        }
+
+        .close-description {
+            background: #f00;
+            color: #fff;
+            border: none;
+            padding: 10px;
+            cursor: pointer;
+            border-radius: 4px;
+            position: absolute;
+            top: 10px;
+            right: 10px;
+        }
+
+        /* Disable interactions on background content when menu or description is open */
         .no-scroll {
             overflow: hidden;
             position: relative;
@@ -83,7 +121,7 @@
         /* Footer Styles */
         footer {
             background-color: #1f1f1f;
-            color: #fff;
+            color: #b5afaf;
             text-align: center;
             padding: 10px;
             position: relative; /* Normal flow */
@@ -91,13 +129,85 @@
             width: 100%;
             margin-top: 20px; /* Optional: margin from the content above */
         }
-    </style>
-</head>
 
+        /* New style for the Xercaii-2.gif image */
+        .xercaii-logo {
+            height: 100px; /* Adjust this value to set the desired height */
+            width: auto; /* Maintain aspect ratio */
+        }
+
+        .description-content {
+            font-family: 'Oswald', sans-serif;
+        }
+        
+        /* Style for check mark images */
+        .checkmark {
+            width: 16px; /* Size of the checkmark image */
+            height: 16px; /* Size of the checkmark image */
+            vertical-align: middle; /* Align with the text */
+            margin-right: 8px; /* Space between the image and the text */
+        }
+
+        /* Make menu wider */
+.menu-content {
+    width: 60%; /* Increase the width of the menu */
+    max-width: 600px; /* Optional: set a max-width to prevent it from getting too wide on larger screens */
+}
+
+/* Button styles */
+.btn {
+    display: inline-block;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 4px;
+    color: #fff;
+    text-align: center;
+    text-decoration: none;
+    font-size: 16px;
+    font-family: 'Oswald', sans-serif;
+    cursor: pointer;
+    margin: 5px 0;
+    transition: background 0.3s ease; /* Smooth transition for gradient */
+}
+
+.btn.youtube {
+    background: linear-gradient(to right, #FF0000, #CC0000); /* YouTube red gradient */
+}
+
+.btn.youtube:hover {
+    background: linear-gradient(to right, #CC0000, #FF0000); /* Reverse gradient for hover effect */
+}
+
+.btn.twitch {
+    background: linear-gradient(to right, #6441A5, #4A2C77); /* Twitch purple gradient */
+}
+
+.btn.twitch:hover {
+    background: linear-gradient(to right, #4A2C77, #6441A5); /* Reverse gradient for hover effect */
+}
+
+.btn.tetris {
+    background: linear-gradient(to right, #00CFFF, #005B96); /* Tetris blue gradient */
+}
+
+.btn.tetris:hover {
+    background: linear-gradient(to right, #005B96, #00CFFF); /* Reverse gradient for hover effect */
+}
+
+.btn.patreon {
+    background-color: #ff00e1; /* Patreon pink */
+}
+
+.btn.patreon:hover {
+    background-color: #c700c8; /* Darker pink for hover effect */
+}
+    </style>
+    <link href="https://fonts.googleapis.com/css2?family=Atkinson+Hyperlegible:wght@400;700&display=swap" rel="stylesheet">
+</head>
 <body>
     <header>
         <div class="logo">
-            <img src="Extra/Images/goku-ultra-instinct.1920x1080.mp4" alt="Xercaii Tweaks Logo">
+            <img src="Extra/Images/Xercaii-2.gif" alt="Xercaii Tweaks Logo" class="xercaii-logo">
         </div>
         <nav>
             <ul>
@@ -108,16 +218,25 @@
         </nav>
     </header>
 
+    <!-- Menu Overlay -->
     <div id="menu-overlay" class="menu-overlay">
         <div class="menu-content">
             <button id="close-menu" class="close-menu">X</button>
             <h2>FOLLOW ME!</h2>
             <ul>
-                <li><a href="https://www.youtube.com/c/Xercaii" target="_blank" style="color:red;">YouTube: Xercaii</a></li>
-                <li><a href="https://www.twitch.tv/youtubexercaii" target="_blank" style="color:purple;">Twitch: YouTube Xercaii</a></li>
-                <li><a href="https://www.patreon.com/Xercaii" target="_blank" style="color:rgb(246, 244, 246);">Patreon: Xercaii</a></li>
-                <li><a href="tetris/index.html" class="btn">Play Tetris</a></li>
+                <li><a href="https://www.youtube.com/c/Xercaii" target="_blank" class="btn youtube">YouTube</a></li>
+                <li><a href="https://www.twitch.tv/youtubexercaii" target="_blank" class="btn twitch">Twitch</a></li>
+                <li><a href="tetris/index.html" class="btn tetris">Play Tetris</a></li>
             </ul>
+        </div>
+    </div>
+
+    <!-- Description Overlay -->
+    <div id="description-overlay" class="description-overlay">
+        <div class="description-content">
+            <button id="close-description" class="close-description">X</button>
+            <h2>Description</h2>
+            <p id="description-text"></p>
         </div>
     </div>
 
@@ -130,38 +249,42 @@
         <h1>OUR TWEAKING UTILITIES</h1>
 
         <section class="utility-section">
-            <img src="Extra/Images/IMG_5900.jpg" alt="Xercaii Premium Tweaking Utility" width="200" height="100">
+            <img src="Extra/Images/IMG_5900.jpg" alt="Xercaii Premium Tweaking Utility">
             <h2>Xercaii Premium Tweaking Utility</h2>
             <p>Price: $24.99</p>
             <button class="btn description-btn" data-description="
-            • It's The Most Effective And Easiest Out
-              Of All My Products; It's A Program That
-              You Can Use To Easily Optimize Your
-              Entire PC In Under 5 Minutes!
-
-            • Drastically Increases and Stabilizes FPS,
-              Fixes FPS Drops, Overall Makes Your
-              Game Feel More Fluid And Responsive
-            
-            • Massively Decreases Your Input Delay
-              And Latency
-            
-            • Lowers Ping And Noticeably Speeds Up
-              Network Speeds
-
-            • Deeply Cleans Your PC Temp Files
-
-            • Lowers Boot Times On Low-End PCs
-
-            • Increases The Litetime Of Your PC By
-              Lowering Processes Using Your System
-              Resources In The Background!
-
-            • Completely Optimizes Your PC For The
-              Best Performance And Latency Possible!
-
-            • + A Lot More
-            " >Description</button>
+                <p id='description-text'>
+                    <img src='Extra/Images/checkmark.png' alt='Check mark' class='checkmark'> The basic tool for PC optimization, delivering peak performance and efficiency.<br><br>
+                    <img src='Extra/Images/checkmark.png' alt='Check mark' class='checkmark'> Effortlessly enhance FPS and fluidity across your games, while stabilizing performance and eliminating drops.<br><br>
+                    <img src='Extra/Images/checkmark.png' alt='Check mark' class='checkmark'> Optimize network speeds, lowering ping and enhancing connectivity.<br><br>
+                    <img src='Extra/Images/checkmark.png' alt='Check mark' class='checkmark'> Clean up temp files to free up valuable system resources.<br><br>
+                    <img src='Extra/Images/checkmark.png' alt='Check mark' class='checkmark'> Improve boot times, even on lower-end PCs.<br><br>
+                    <img src='Extra/Images/checkmark.png' alt='Check mark' class='checkmark'> Extend the lifespan of your PC by minimizing background processes.<br><br>
+                    <img src='Extra/Images/checkmark.png' alt='Check mark' class='checkmark'> Streamline startup programs and services for a smoother experience.<br><br>
+                    <img src='Extra/Images/checkmark.png' alt='Check mark' class='checkmark'> Customize settings for maximum performance.<br><br>
+                    <img src='Extra/Images/checkmark.png' alt='Check mark' class='checkmark'> Save and restore optimized settings with ease.<br><br>
+                    <img src='Extra/Images/checkmark.png' alt='Check mark' class='checkmark'> Enjoy our user-friendly interface and in-depth performance analysis tools.<br><br>
+                    <img src='Extra/Images/checkmark.png' alt='Check mark' class='checkmark'> Windows Setting Optimization<br><br>
+                    <img src='Extra/Images/checkmark.png' alt='Check mark' class='checkmark'> Debloat PC<br><br>
+                    <img src='Extra/Images/checkmark.png' alt='Check mark' class='checkmark'> Advanced Custom Power Plan<br><br>
+                    <img src='Extra/Images/checkmark.png' alt='Check mark' class='checkmark'> Drastically reduce input lag and latency for a more responsive gaming experience.<br><br>
+                    <img src='Extra/Images/checkmark.png' alt='Check mark' class='checkmark'> In-depth Registry Optimization<br><br>
+                    <img src='Extra/Images/checkmark.png' alt='Check mark' class='checkmark'> Full Network Optimization<br><br>
+                    <img src='Extra/Images/checkmark.png' alt='Check mark' class='checkmark'> Deep PC Clean<br><br>
+                    <img src='Extra/Images/checkmark.png' alt='Check mark' class='checkmark'> Advanced Power Optimization<br><br>
+                    <img src='Extra/Images/checkmark.png' alt='Check mark' class='checkmark'> Advanced USB Optimization<br><br>
+                    <img src='Extra/Images/checkmark.png' alt='Check mark' class='checkmark'> Advanced Boot Config Optimization<br><br>
+                    <img src='Extra/Images/checkmark.png' alt='Check mark' class='checkmark'> Full NVIDIA GPU Optimization<br><br>
+                    <img src='Extra/Images/checkmark.png' alt='Check mark' class='checkmark'> Advanced Mouse and Keyboard USB Optimization<br><br>
+                    <img src='Extra/Images/checkmark.png' alt='Check mark' class='checkmark'> Full AMD GPU Optimization<br><br>
+                    <img src='Extra/Images/checkmark.png' alt='Check mark' class='checkmark'> DirectX Optimization<br><br>
+                    <img src='Extra/Images/checkmark.png' alt='Check mark' class='checkmark'> Advanced CPU Optimization<br><br>
+                    <img src='Extra/Images/checkmark.png' alt='Check mark' class='checkmark'> Fix Corrupted Files<br><br>
+                    <img src='Extra/Images/checkmark.png' alt='Check mark' class='checkmark'> Advanced Storage Optimization<br><br>
+                    <img src='Extra/Images/checkmark.png' alt='Check mark' class='checkmark'> Timer Resolution Guides<br><br>
+                    <img src='Extra/Images/checkmark.png' alt='Check mark' class='checkmark'> 600+ Tweaks!
+                </p>
+            ">Description</button>
             <a href="payment.html?type=premium" class="btn">Buy Now</a>
         </section>
 
@@ -169,16 +292,84 @@
             <img src="Extra/Images/IMG_5948.jpg" alt="Xercaii Basic Tweaking Utility">
             <h2>Xercaii Basic Tweaking Utility</h2>
             <p>Price: $7.99</p>
-            <button class="btn description-btn" data-description="A simplified version of our premium tool, perfect for casual users looking to boost their PC.">Description</button>
+            <button class="btn description-btn" data-description="
+                <p id='description-text'>
+                    <img src='Extra/Images/checkmark.png' alt='Check mark' class='checkmark'> The basic tool for PC optimization, delivering peak performance and efficiency.<br><br>
+                    <img src='Extra/Images/checkmark.png' alt='Check mark' class='checkmark'> Effortlessly enhance FPS and fluidity across your games, while stabilizing performance and eliminating drops.<br><br>
+                    <img src='Extra/Images/checkmark.png' alt='Check mark' class='checkmark'> Optimize network speeds, lowering ping and enhancing connectivity.<br><br>
+                    <img src='Extra/Images/checkmark.png' alt='Check mark' class='checkmark'> Clean up temp files to free up valuable system resources.<br><br>
+                    <img src='Extra/Images/checkmark.png' alt='Check mark' class='checkmark'> Improve boot times, even on lower-end PCs.<br><br>
+                    <img src='Extra/Images/checkmark.png' alt='Check mark' class='checkmark'> Extend the lifespan of your PC by minimizing background processes.<br><br>
+                    <img src='Extra/Images/checkmark.png' alt='Check mark' class='checkmark'> Streamline startup programs and services for a smoother experience.<br><br>
+                    <img src='Extra/Images/checkmark.png' alt='Check mark' class='checkmark'> Customize settings for maximum performance.<br><br>
+                    <img src='Extra/Images/checkmark.png' alt='Check mark' class='checkmark'> Save and restore optimized settings with ease.<br><br>
+                    <img src='Extra/Images/checkmark.png' alt='Check mark' class='checkmark'> Enjoy our user-friendly interface and in-depth performance analysis tools.<br><br>
+                    <img src='Extra/Images/checkmark.png' alt='Check mark' class='checkmark'> Windows Setting Optimization<br><br>
+                    <img src='Extra/Images/checkmark.png' alt='Check mark' class='checkmark'> Debloat PC<br><br>
+                    <img src='Extra/Images/checkmark.png' alt='Check mark' class='checkmark'> Advanced Custom Power Plan<br><br>
+                    <img src='Extra/Images/xmark.png' alt='Check mark' class='checkmark'> Drastically reduce input lag and latency for a more responsive gaming experience.<br><br>
+                    <img src='Extra/Images/xmark.png' alt='X mark' class='checkmark'> In-depth Registry Optimization<br><br>
+                    <img src='Extra/Images/xmark.png' alt='X mark' class='checkmark'> Full Network Optimization<br><br>
+                    <img src='Extra/Images/xmark.png' alt='X mark' class='checkmark'> Deep PC Clean<br><br>
+                    <img src='Extra/Images/xmark.png' alt='X mark' class='checkmark'> Advanced Power Optimization<br><br>
+                    <img src='Extra/Images/xmark.png' alt='X mark' class='checkmark'> Advanced USB Optimization<br><br>
+                    <img src='Extra/Images/xmark.png' alt='X mark' class='checkmark'> Advanced Boot Config Optimization<br><br>
+                    <img src='Extra/Images/xmark.png' alt='X mark' class='checkmark'> Full NVIDIA GPU Optimization<br><br>
+                    <img src='Extra/Images/xmark.png' alt='X mark' class='checkmark'> Advanced Mouse and Keyboard USB Optimization<br><br>
+                    <img src='Extra/Images/xmark.png' alt='X mark' class='checkmark'> Full AMD GPU Optimization<br><br>
+                    <img src='Extra/Images/xmark.png' alt='X mark' class='checkmark'> DirectX Optimization<br><br>
+                    <img src='Extra/Images/xmark.png' alt='X mark' class='checkmark'> Advanced CPU Optimization<br><br>
+                    <img src='Extra/Images/xmark.png' alt='X mark' class='checkmark'> Fix Corrupted Files<br><br>
+                    <img src='Extra/Images/xmark.png' alt='X mark' class='checkmark'> Advanced Storage Optimization<br><br>
+                    <img src='Extra/Images/xmark.png' alt='X mark' class='checkmark'> Timer Resolution Guides<br><br>
+                    <img src='Extra/Images/xmark.png' alt='X mark' class='checkmark'> 600+ Tweaks!
+                </p>
+            ">Description</button>
             <a href="payment.html?type=basic" class="btn">Buy Now</a>
         </section>
     </main>
+
+    <footer style="background: none;">
+        <div style="display: flex; justify-content: center; align-items: center; margin-top: 0px; margin-bottom: 20px;">
+            <div style="display: flex; align-items: center; margin-right: 40px;">
+                <img src="Extra/Images/SecurityLock.png" alt="Secure Payment" style="width: 30px; height: 30px; margin-right: 10px;">
+                <p style="color: #fff; background: none; margin: 0; font-family: 'Atkinson Hyperlegible', sans-serif;">Secure Payment</p>
+            </div>
+            <div style="display: flex; align-items: center;">
+                <img src="Extra/Images/Delivery.png" alt="Instant Delivery" style="width: 30px; height: 30px; margin-right: 10px;">
+                <p style="color: #fff; background: none; margin: 0; font-family: 'Atkinson Hyperlegible', sans-serif;">Instant Delivery</p>
+            </div>
+        </div>
+    </footer>
 
     <footer>
         <p>&copy; 2024 Xercaii Tweaks. All Rights Reserved.</p>
     </footer>
 
     <script src="scripts/main.js"></script>
-</body>
+    <script>
+        document.querySelectorAll('.description-btn').forEach(button => {
+            button.addEventListener('click', () => {
+                document.getElementById('description-text').innerHTML = button.getAttribute('data-description');
+                document.getElementById('description-overlay').style.display = 'flex';
+                document.body.classList.add('no-scroll');
+            });
+        });
 
-</html> 
+        document.getElementById('close-description').addEventListener('click', () => {
+            document.getElementById('description-overlay').style.display = 'none';
+            document.body.classList.remove('no-scroll');
+        });
+
+        document.getElementById('menu-btn').addEventListener('click', () => {
+            document.getElementById('menu-overlay').style.display = 'flex';
+            document.body.classList.add('no-scroll');
+        });
+
+        document.getElementById('close-menu').addEventListener('click', () => {
+            document.getElementById('menu-overlay').style.display = 'none';
+            document.body.classList.remove('no-scroll');
+        });
+    </script>
+</body>
+</html>

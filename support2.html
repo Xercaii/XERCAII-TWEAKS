@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact Support - Xercaii Tweaks</title>
+    <link rel="stylesheet" href="styles/main.css">
+    <style>
+        /* Styling for the contact form */
+        .contact-form {
+            max-width: 600px;
+            margin: 50px auto;
+            padding: 20px;
+            border: 1px solid #ddd;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.2); /* Shadow for better separation */
+            background: rgba(255, 255, 255, 0.8); /* Glass-like effect */
+        }
+
+        .contact-form h2 {
+            margin-bottom: 20px;
+            font-size: 1.8em;
+            color: #333; /* Dark text color for better readability */
+        }
+
+        .contact-form label {
+            display: block;
+            margin: 10px 0 5px;
+            color: #333; /* Dark text color for better readability */
+        }
+
+        .contact-form input,
+        .contact-form textarea {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 10px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            font-size: 16px;
+            box-sizing: border-box; /* Prevents padding from affecting width */
+        }
+
+        .contact-form textarea {
+            resize: none; /* Prevents resizing of the textarea */
+        }
+
+        .contact-form input[type="checkbox"] {
+            margin-right: 10px;
+        }
+
+        .contact-form .btn {
+            background-color: #007bff; /* Blue background for visibility */
+            color: #fff; /* White text */
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 16px;
+        }
+
+        .contact-form .btn:hover {
+            background-color: #0056b3; /* Darker blue for hover effect */
+        }
+
+        .contact-form .privacy-policy {
+            display: flex;
+            align-items: center;
+            margin-top: 10px;
+        }
+
+        .contact-form .privacy-policy label {
+            margin: 0;
+        }
+    </style>
+</head>
+
+<body>
+    <header>
+        <div class="logo">
+            <img src="Extra/Images/Xercaii-2.gif" alt="Xercaii Tweaks Logo" class="xercaii-logo">
+        </div>
+    </header>
+
+    <main>
+        <div class="contact-form">
+            <h2>Contact Support</h2>
+                <label for="name">Name:</label>
+                <input type="text" id="name" name="name" required>
+
+                <label for="email">Email:</label>
+                <input type="email" id="email" name="email" required>
+
+                <label for="message">Message:</label>
+                <textarea id="message" name="message" rows="5" required></textarea>
+
+                <div class="privacy-policy">
+                    <input type="checkbox" id="privacy" name="privacy" required>
+                    <label for="privacy">I have read and agree to the <a href="#">privacy policy</a>.</label>
+                </div>
+
+                <button type="submit" class="btn">Send</button>
+            </form>
+        </div>
+    </main>
+
+    <footer>
+        <p>&copy; 2024 Xercaii Tweaks. All Rights Reserved.</p>
+    </footer>
+</body>
+
+</html>

@@ -4,7 +4,7 @@
     top: 70%; /* Center vertically */
     left: 50%; /* Center horizontally */
     transform: translate(-50%, -50%) scale(1.0); /* Adjust scale if needed */
-    z-index: 1000; /* Ensure it is above other content */
+    z-index: 1000; /* Ensure it is below the menu overlay */
 }
 
 /* General Styles */
@@ -59,7 +59,7 @@ nav ul li a:hover {
     display: none;
     justify-content: center;
     align-items: center;
-    z-index: 1000;
+    z-index: 2000; /* Ensure it is above the PayPal button */
 }
 
 #menu-overlay .menu-content {
@@ -233,4 +233,10 @@ footer {
 #product-price {
     font-weight: bold;
     color: #00c6ff;
-}    
+}
+
+.checkmark {
+    width: 20px; /* Adjust the size of the checkmark image */
+    vertical-align: middle; /* Align with the middle of the text */
+    margin-right: 10px; /* Space between the checkmark and text */
+}

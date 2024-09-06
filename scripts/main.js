@@ -1,19 +1,6 @@
 document.addEventListener('DOMContentLoaded', () => {
     console.log('JavaScript is loaded and running.');
 
-    // Event listener for description buttons
-    document.querySelectorAll('.description-btn').forEach(button => {
-        button.addEventListener('click', (event) => {
-            console.log('Description button clicked.');
-            const description = event.target.getAttribute('data-description');
-            if (description) {
-                alert(description); // Show the description in an alert dialog
-            } else {
-                console.error('No description found for this button.');
-            }
-        });
-    });
-
     // Menu button functionality
     const menuBtn = document.getElementById('menu-btn');
     const menuOverlay = document.getElementById('menu-overlay');

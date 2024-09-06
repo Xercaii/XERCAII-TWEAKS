@@ -7,7 +7,10 @@
     <title>Payment - Xercaii Tweaks</title>
     <link rel="stylesheet" href="styles/main.css">
     <script src="https://www.paypal.com/sdk/js?client-id=AdMJQ1k5-3hyq7-C3fcA8WL928fpL9P1h20PaxJovzGlU8_Lbfpd8vjDiXyAfH9KuJJUzzrV8u6UZxuT"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Atkinson Hyperlegible:wght@400;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@400;700&display=swap" rel="stylesheet">
 </head>
+
 <style>
     .large-text-container {
         position: absolute;
@@ -26,25 +29,20 @@
         margin: 0;
     }
 
-    .menu-overlay {
-        position: fixed;
-        top: 0;
-        left: 0;
-        width: 100%;
-        height: 100%;
-        background: rgba(0, 0, 0, 0.8);
-        display: none;
-        justify-content: center;
-        align-items: center;
-        z-index: 1000;
-    }
-
     .menu-content {
-        padding: 20px;
-        border-radius: 8px;
-        text-align: center;
-        color: #000;
-    }
+            padding: 20px;
+            border-radius: 8px;
+            text-align: center;
+            background: rgba(255, 255, 255, 0.1); /* Glass-like background */
+            backdrop-filter: blur(10px); /* Blurry glass effect */
+            color: #ffffff;
+            max-width: 80%; /* Limit the width */
+        }
+
+        .menu-content h2 {
+            color: #ffffff; /* Change color of "Description" text to white */
+            margin-bottom: 20px; /* Space below the heading */
+        }
 
     .menu-content h2 {
         color: #fff;
@@ -61,12 +59,108 @@
         top: 10px;
         right: 10px;
     }
+
+     /* Main Content */
+     main {
+            padding-bottom: 70px; /* Ensure space for the footer */
+        }
+
+        /* Footer Styles */
+        footer {
+            background-color: #1f1f1f;
+            color: #b5afaf;
+            text-align: center;
+            padding: 10px;
+            bottom: 0;
+            margin-top: 20px; /* Optional: margin from the content above */
+        }
+
+    /* Adjust footer styling */
+    .footer-content {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        margin-top: 270px; /* Increased margin-top to move footer down significantly */
+        font-size: 0.9em; /* Smaller font size */
+        padding: 10px 0; /* Adjust padding as needed */
+    }
+
+    .footer-content img {
+        width: 30px; /* Adjust image size */
+        height: 30px; /* Adjust image size */
+        margin-right: 10px;
+    }
+
+    .footer-content p {
+        color: #fff;
+        margin: 0;
+    }
+
+    /* New style for the Xercaii-2.gif image */
+    .xercaii-logo {
+            height: 100px; /* Adjust this value to set the desired height */
+            width: auto; /* Maintain aspect ratio */
+    }
+
+/* Make menu wider */
+.menu-content {
+    width: 60%; /* Increase the width of the menu */
+    max-width: 600px; /* Optional: set a max-width to prevent it from getting too wide on larger screens */
+}
+
+/* Button styles */
+.btn {
+    display: inline-block;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 4px;
+    color: #fff;
+    text-align: center;
+    text-decoration: none;
+    font-size: 16px;
+    font-family: 'Oswald', sans-serif;
+    cursor: pointer;
+    margin: 5px 0;
+    transition: background 0.3s ease; /* Smooth transition for gradient */
+}
+
+.btn.youtube {
+    background: linear-gradient(to right, #FF0000, #CC0000); /* YouTube red gradient */
+}
+
+.btn.youtube:hover {
+    background: linear-gradient(to right, #CC0000, #FF0000); /* Reverse gradient for hover effect */
+}
+
+.btn.twitch {
+    background: linear-gradient(to right, #6441A5, #4A2C77); /* Twitch purple gradient */
+}
+
+.btn.twitch:hover {
+    background: linear-gradient(to right, #4A2C77, #6441A5); /* Reverse gradient for hover effect */
+}
+
+.btn.tetris {
+    background: linear-gradient(to right, #00CFFF, #005B96); /* Tetris blue gradient */
+}
+
+.btn.tetris:hover {
+    background: linear-gradient(to right, #005B96, #00CFFF); /* Reverse gradient for hover effect */
+}
+
+.btn.patreon {
+    background-color: #ff00e1; /* Patreon pink */
+}
+
+.btn.patreon:hover {
+    background-color: #c700c8; /* Darker pink for hover effect */
+}
 </style>
 
 <body>
     <header>
         <div class="logo">
-            <img src="Extra/Images/goku-ultra-instinct.1920x1080.mp4" alt="Xercaii Tweaks Logo">
+            <img src="Extra/Images/Xercaii-2.gif" alt="Xercaii Tweaks Logo" class="xercaii-logo">
         </div>
         <nav>
             <ul>
@@ -82,10 +176,9 @@
             <button id="close-menu" class="close-menu">X</button>
             <h2>FOLLOW ME!</h2>
             <ul>
-                <li><a href="https://www.youtube.com/c/Xercaii" target="_blank" style="color:red;">YouTube: Xercaii</a></li>
-                <li><a href="https://www.twitch.tv/youtubexercaii" target="_blank" style="color:purple;">Twitch: YouTube Xercaii</a></li>
-                <li><a href="https://www.patreon.com/Xercaii" target="_blank" style="color:rgb(246, 244, 246);">Patreon: Xercaii</a></li>
-                <li><a href="tetris/index.html" class="btn">Play Tetris</a></li>
+                <li><a href="https://www.youtube.com/c/Xercaii" target="_blank" class="btn youtube">YouTube</a></li>
+                <li><a href="https://www.twitch.tv/youtubexercaii" target="_blank" class="btn twitch">Twitch</a></li>
+                <li><a href="tetris/index.html" class="btn tetris">Play Tetris</a></li>
             </ul>
         </div>
     </div>
@@ -100,6 +193,17 @@
         <div id="paypal-button-container"></div>
     </main>
 
+    <!-- Footer content -->
+    <div class="footer-content">
+        <div style="display: flex; align-items: center; margin-right: 20px;">
+            <img src="Extra/Images/SecurityLock.png" alt="Secure Payment">
+            <p style="color: #fff; background: none; margin: 0; font-family: 'Atkinson Hyperlegible', sans-serif;">Secure Payment</p>
+        </div>
+        <div style="display: flex; align-items: center;">
+            <img src="Extra/Images/Delivery.png" alt="Instant Delivery">
+            <p style="color: #fff; background: none; margin: 0; font-family: 'Atkinson Hyperlegible', sans-serif;">Instant Delivery</p>
+        </div>
+    </div>
     <footer>
         <p>&copy; 2024 Xercaii Tweaks. All Rights Reserved.</p>
     </footer>

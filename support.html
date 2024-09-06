@@ -1,0 +1,266 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact Support - Xercaii Tweaks</title>
+    <link rel="stylesheet" href="styles/main.css">
+    <style>
+        /* Add the styles for the menu overlay */
+        .menu-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.8);
+            display: none; /* Hidden by default */
+            justify-content: center;
+            align-items: center;
+            z-index: 1000; /* Ensure it is above other content */
+        }
+
+        .menu-content {
+            padding: 20px;
+            border-radius: 8px;
+            text-align: center;
+            color: #000;
+            max-width: 300px; /* Optional: limit the width */
+        }
+
+        .menu-content h2 {
+            color: #fff; /* Change color of "Follow Us" text to white */
+            margin-bottom: 20px; /* Optional: space below the heading */
+        }
+
+        .menu-content ul {
+            list-style-type: none; /* Remove bullet points */
+            padding: 0; /* Remove padding */
+            margin: 0; /* Remove margin */
+        }
+
+        .menu-content li {
+            margin: 10px 0; /* Add space between items */
+        }
+
+        .menu-content a {
+            color: inherit; /* Inherit color from parent */
+            text-decoration: none; /* Remove underline */
+        }
+
+        .close-menu {
+            background: #f00;
+            color: #fff;
+            border: none;
+            padding: 10px;
+            cursor: pointer;
+            border-radius: 4px;
+            position: absolute;
+            top: 10px;
+            right: 10px;
+        }
+
+        /* Disable interactions on background content when menu is open */
+        .no-scroll {
+            overflow: hidden;
+            position: relative;
+            height: 100vh;
+            width: 100vw;
+        }
+
+        /* Ensure html and body take full height */
+        html, body {
+            height: 100%;
+            margin: 0;
+        }
+
+        /* Main Content */
+        main {
+            padding-bottom: 60px; /* Ensure space for the footer */
+        }
+
+        /* Styling for the contact form */
+        .contact-form {
+            max-width: 600px;
+            margin: 50px auto;
+            padding: 20px;
+            border: 1px solid #ddd;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.2); /* Shadow for better separation */
+            
+        }
+
+        .contact-form h2 {
+            margin-bottom: 20px;
+            font-size: 1.8em;
+            color: #c6c3c3; /* Dark text color for better readability */
+        }
+
+        .contact-form label {
+            display: block;
+            margin: 10px 0 5px;
+            color: #c6c3c3; /* Dark text color for better readability */
+        }
+
+        .contact-form input,
+        .contact-form textarea {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 10px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            font-size: 16px;
+            box-sizing: border-box; /* Prevents padding from affecting width */
+        }
+
+        .contact-form textarea {
+            resize: none; /* Prevents resizing of the textarea */
+        }
+
+        .contact-form input[type="checkbox"] {
+            margin-right: 10px;
+        }
+
+        .contact-form .btn {
+            background-color: #007bff; /* Blue background for visibility */
+            color: #fff; /* White text */
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 16px;
+        }
+
+        .contact-form .btn:hover {
+            background-color: #0056b3; /* Darker blue for hover effect */
+        }
+
+        .contact-form .privacy-policy {
+    display: flex; /* Align items in a row */
+    align-items: center; /* Center-align items vertically */
+    margin-top: 10px; /* Space above */
+    gap: 2px; /* Reduce space between the checkbox and text */
+    flex-wrap: nowrap; /* Prevent wrapping */
+}
+
+.contact-form .privacy-policy label {
+    margin: 0;
+    white-space: nowrap; /* Ensure text stays on one line */
+}
+
+.contact-form .btn {
+    background-color: #007bff; /* Blue background for visibility */
+    color: #fff; /* White text */
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px;
+    margin-top: 80px; /* Increase margin-top significantly for more space */
+}
+
+        .contact-form .privacy-policy 
+        {
+    display: flex;
+    align-items: center;
+    margin-top: 10px;
+    margin-left: -10px; /* Adjust this value to position it next to the checkbox */
+    margin-right: 37.5pc;
+}
+
+ /* Footer Styles */
+footer {
+            background-color: #1f1f1f;
+            color: #b5afaf;
+            text-align: center;
+            padding: 10px;
+            position: relative; /* Normal flow */
+            bottom: 0;
+            width: 100%;
+            margin-top: 20px; /* Optional: margin from the content above */
+        }
+
+        /* New style for the Xercaii-2.gif image */
+        .xercaii-logo {
+            height: 100px; /* Adjust this value to set the desired height */
+            width: auto; /* Maintain aspect ratio */
+        }
+    </style>
+</head>
+
+<body>
+    <header>
+        <div class="logo">
+            <img src="Extra/Images/Xercaii-2.gif" alt="Xercaii Tweaks Logo" class="xercaii-logo">
+        </div>
+        <nav>
+            <ul>
+                <li><a href="index.html">Home</a></li>
+                <li><a href="shop.html">Shop</a></li>
+                <li><a href="#" id="menu-btn">Menu</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <div id="menu-overlay" class="menu-overlay">
+        <div class="menu-content">
+            <button id="close-menu" class="close-menu">X</button>
+            <h2>FOLLOW ME!</h2>
+            <ul>
+                <li><a href="https://www.youtube.com/c/Xercaii" target="_blank" style="color:red;">YouTube: Xercaii</a></li>
+                <li><a href="https://www.twitch.tv/youtubexercaii" target="_blank" style="color:purple;">Twitch: YouTube Xercaii</a></li>
+                <li><a href="https://www.patreon.com/Xercaii" target="_blank" style="color:rgb(246, 244, 246);">Patreon: Xercaii</a></li>
+                <li><a href="tetris/index.html" class="btn">Play Tetris</a></li>
+            </ul>
+        </div>
+    </div>
+
+<!-- Container for the large text -->
+<div class="top-text">
+    <h1>CONTACT SUPPORT</h1>
+</div>
+
+    <main>
+        <div class="contact-form">
+            <h2>Contact Support</h2>
+            <form action="https://formspree.io/f/xdknjweg" method="POST">
+                <label for="name">Name:</label>
+                <input type="text" id="name" name="name" required>
+
+                <label for="email">Email:</label>
+                <input type="email" id="email" name="email" required>
+
+                <label for="message">Message:</label>
+                <textarea id="message" name="message" rows="5" required></textarea>
+
+                <div class="privacy-policy">
+                    <input type="checkbox" id="privacy" name="privacy" required>
+                    <label for="privacy">I have read and agree to the <a href="#">privacy policy</a>.</label>
+                </div>
+
+                <button type="submit" class="btn">Send</button>
+            </form>
+        </div>
+    </main>
+
+    <script src="scripts/main.js"></script>
+    <script>
+        // JavaScript to handle menu button and overlay visibility
+        document.getElementById('menu-btn').addEventListener('click', function() {
+            document.getElementById('large-text-container').style.display = 'none';
+            document.getElementById('menu-overlay').style.display = 'flex';
+        });
+
+        document.getElementById('close-menu').addEventListener('click', function() {
+            document.getElementById('large-text-container').style.display = 'block';
+            document.getElementById('menu-overlay').style.display = 'none';
+        });
+    </script>
+
+    <footer>
+        <p>&copy; 2024 Xercaii Tweaks. All Rights Reserved.</p>
+    </footer>
+</body>
+
+</html>
