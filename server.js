@@ -6,7 +6,6 @@ const port = 3000;
 
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
-app.use(express.static('public')); // To serve static files like CSS, JS, etc.
 
 const usersFile = './users.json';
 

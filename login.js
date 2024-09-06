@@ -29,4 +29,4 @@ document.getElementById('login-form').addEventListener('submit', async (event) =
         console.error('An error occurred:', error);
         alert('An error occurred while logging in. Please try again.');
     }
-});
+});   
