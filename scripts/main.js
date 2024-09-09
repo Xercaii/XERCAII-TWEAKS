@@ -29,7 +29,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
     if (type === 'premium') {
         productName.textContent = 'Xercaii Premium Tweaking Utility';
-        price = 24.99;
+        price = 0.1;
         productPrice.textContent = `$${price}`;
     } else if (type === 'basic') {
         productName.textContent = 'Xercaii Basic Tweaking Utility';
@@ -49,18 +49,41 @@ document.addEventListener('DOMContentLoaded', () => {
         },
         onApprove: function(data, actions) {
             return actions.order.capture().then(function(details) {
-                window.location.href = `success.html?type=${type}`;
+                window.location.href = `success.html?type=${type}&token=${details.id}`;
             });
         }
     }).render('#paypal-button-container');
 });
 
 // Success Page Logic
-const successParams = new URLSearchParams(window.location.search);
-const successProductType = successParams.get('type');
+document.addEventListener('DOMContentLoaded', () => {
+    const urlParams = new URLSearchParams(window.location.search);
+    const token = urlParams.get('token');
+    const successProductType = urlParams.get('type');
+    const downloadLink = document.getElementById('download-link');
 
-if (successProductType === 'premium') {
-    document.getElementById('download-link').href = 'Extra/Other/XERCAII TWEAKS.rar.zip';
-} else if (successProductType === 'basic') {
-    document.getElementById('download-link').href = 'Extra/Other/Xercaii-Basic-Tweaking-Utility-main.zip';
-}
+    if (token) {
+        fetch(`/api/validate_token?token=${token}`)
+            .then(response => response.json())
+            .then(data => {
+                if (data.valid) {
+                    if (successProductType === 'premium') {
+                        downloadLink.href = 'Extra/Other/XERCAII TWEAKS.rar.zip';
+                        downloadLink.textContent = 'Download Premium Utility';
+                    } else if (successProductType === 'basic') {
+                        downloadLink.href = 'Extra/Other/Xercaii-Basic-Tweaking-Utility-main.zip';
+                        downloadLink.textContent = 'Download Basic Utility';
+                    } else {
+                        downloadLink.href = '#';
+                        downloadLink.textContent = 'Download Error';
+                    }
+                } else {
+                    downloadLink.href = '#';
+                    downloadLink.textContent = 'Invalid or Expired Token';
+                }
+            });
+    } else {
+        downloadLink.href = '#';
+        downloadLink.textContent = 'No Token Provided';
+    }
+});

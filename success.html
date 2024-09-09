@@ -6,6 +6,45 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Payment Success - Xercaii Tweaks</title>
     <link rel="stylesheet" href="styles/main.css">
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const urlParams = new URLSearchParams(window.location.search);
+            const token = urlParams.get('token');
+
+            if (!token) {
+                window.location.href = '/error.html';  // Redirect to an error page or home page
+                return;
+            }
+
+            fetch(`/api/validate_token?token=${token}`)
+                .then(response => response.json())
+                .then(data => {
+                    if (!data.valid) {
+                        window.location.href = '/error.html';  // Redirect to an error page or home page
+                    } else {
+                        // Set a timeout to delete the token after 1 second
+                        setTimeout(() => {
+                            fetch('/api/delete_token', {
+                                method: 'POST',
+                                headers: {
+                                    'Content-Type': 'application/json'
+                                },
+                                body: JSON.stringify({ token })
+                            }).then(response => response.json())
+                              .then(data => {
+                                  if (!data.success) {
+                                      console.error('Failed to delete the token');
+                                  }
+                              });
+                        }, 1000);  // 1 second delay
+                    }
+                });
+        });
+
+        document.addEventListener('contextmenu', function(event) {
+          event.preventDefault();
+        });
+      </script>
     <style>
     /* New style for the Xercaii-2.gif image */
         .xercaii-logo {
@@ -58,16 +97,19 @@
             const urlParams = new URLSearchParams(window.location.search);
             const type = urlParams.get('type');
             const downloadLink = document.getElementById('download-link');
+            const validTypes = ['premium', 'basic']; // Define valid types here
 
-            if (type === 'premium') {
-                downloadLink.href = 'Extra/Other/XERCAII TWEAKS.rar.zip'; // Path to ZIP file for premium utility
-                downloadLink.textContent = 'Download Premium Utility';
-            } else if (type === 'basic') {
-                downloadLink.href = 'Extra/Other/Xercaii-Basic-Tweaking-Utility-main.zip'; // Path to ZIP file for basic utility
-                downloadLink.textContent = 'Download Basic Utility';
+            if (validTypes.includes(type)) {
+                if (type === 'premium') {
+                    downloadLink.href = 'Extra/Other/XERCAII TWEAKS.rar.zip'; // Path to ZIP file for premium utility
+                    downloadLink.textContent = 'Download Premium Utility';
+                } else if (type === 'basic') {
+                    downloadLink.href = 'Extra/Other/Xercaii-Basic-Tweaking-Utility-main.zip'; // Path to ZIP file for basic utility
+                    downloadLink.textContent = 'Download Basic Utility';
+                }
             } else {
-                downloadLink.href = '#';
-                downloadLink.textContent = 'Download Error';
+                // Redirect to an error or unauthorized page
+                window.location.href = 'unauthorized.html';
             }
         });
     </script>
