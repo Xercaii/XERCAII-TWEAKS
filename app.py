@@ -4,7 +4,7 @@ from flask_mail import Mail, Message
 import uuid
 
 app = Flask(__name__)
-app.secret_key = 'your_secret_key'  # Replace with a strong secret key
+app.secret_key = 'EPnRG4VcAP1PTWT1CixBNR01vbdCusHkNkbtjGQ2sx3Ul13Xy1bR8uLBazu-JcY-b0cYNODWPKmkcc3Y'  # Replace with a strong secret key
 app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///yourdatabase.db'
 db = SQLAlchemy(app)
 mail = Mail(app)

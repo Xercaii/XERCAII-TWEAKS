@@ -29,7 +29,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
     if (type === 'premium') {
         productName.textContent = 'Xercaii Premium Tweaking Utility';
-        price = 0.1;
+        price = 24.99;
         productPrice.textContent = `$${price}`;
     } else if (type === 'basic') {
         productName.textContent = 'Xercaii Basic Tweaking Utility';
@@ -49,7 +49,7 @@ document.addEventListener('DOMContentLoaded', () => {
         },
         onApprove: function(data, actions) {
             return actions.order.capture().then(function(details) {
-                window.location.href = `success.html?type=${type}&token=${details.id}`;
+                window.location.href = `success.html?type=${type}&token=${data.orderID}`;
             });
         }
     }).render('#paypal-button-container');
